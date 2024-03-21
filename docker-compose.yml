@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:16
+    volumes:
+      - ./db/postgres:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=${TREE_MENU_POSTGRES_DB}
+      - POSTGRES_USER=${TREE_MENU_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${TREE_MENU_POSTGRES_PASSWORD}
+    networks:
+      - tree-menu-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${TREE_MENU_POSTGRES_USER} -d ${TREE_MENU_POSTGRES_DB}"]
+      interval: 30s
+      timeout: 60s
+      retries: 5
+      start_period: 80s  
+
+  web:
+    restart: always
+    build: .
+    command: sh -c "sleep 2 && python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - 8000:8000
+    environment:
+      - DEBUG=${DEBUG}
+      - SECRET_KEY=${SECRET_KEY}
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS}
+      - POSTGRES_DB=${TREE_MENU_POSTGRES_DB}
+      - POSTGRES_USER=${TREE_MENU_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${TREE_MENU_POSTGRES_PASSWORD}
+    depends_on:
+      - db
+    volumes:
+      - ./app:/app
+    networks:
+      - tree-menu-network
+
+networks:
+  tree-menu-network:
