@@ -14,6 +14,7 @@
  {% draw_menu 'main_menu' %}
  При выполнении задания из библиотек следует использовать только Django и стандартную библиотеку Python.
 
+  
 ## For download and start docker-compose:
 ```
 git clone https://github.com/StrunkGroove/UpTrader.git && \
@@ -21,6 +22,7 @@ cd ./UpTrader && \
 docker-compose --env-file .env.dev up -d 
 ```
 
+  
 ## For setup app
 #### Enter Docker container:
 ```
@@ -39,7 +41,8 @@ python data_for_fill_db.py
 python manage.py createsuperuser --username admin@mail.ru --email admin@mail.ru
 ```
 
-### Django available:
+  
+## Django available:
 Url: http://localhost:8000  
 Name superuser: admin@mail.ru  
 Password: "your password in this step 'Create superuser' "
