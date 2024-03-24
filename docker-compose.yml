@@ -6,13 +6,13 @@ services:
     volumes:
       - ./db/postgres:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_DB=${TREE_MENU_POSTGRES_DB}
-      - POSTGRES_USER=${TREE_MENU_POSTGRES_USER}
-      - POSTGRES_PASSWORD=${TREE_MENU_POSTGRES_PASSWORD}
+      - POSTGRES_DB=${UP_TRADER_POSTGRES_DB}
+      - POSTGRES_USER=${UP_TRADER_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${UP_TRADER_POSTGRES_PASSWORD}
     networks:
       - tree-menu-network
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${TREE_MENU_POSTGRES_USER} -d ${TREE_MENU_POSTGRES_DB}"]
+      test: ["CMD-SHELL", "pg_isready -U ${UP_TRADER_POSTGRES_USER} -d ${UP_TRADER_POSTGRES_DB}"]
       interval: 30s
       timeout: 60s
       retries: 5
@@ -28,9 +28,9 @@ services:
       - DEBUG=${DEBUG}
       - SECRET_KEY=${SECRET_KEY}
       - ALLOWED_HOSTS=${ALLOWED_HOSTS}
-      - POSTGRES_DB=${TREE_MENU_POSTGRES_DB}
-      - POSTGRES_USER=${TREE_MENU_POSTGRES_USER}
-      - POSTGRES_PASSWORD=${TREE_MENU_POSTGRES_PASSWORD}
+      - POSTGRES_DB=${UP_TRADER_POSTGRES_DB}
+      - POSTGRES_USER=${UP_TRADER_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${UP_TRADER_POSTGRES_PASSWORD}
     depends_on:
       - db
     volumes:
