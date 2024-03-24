@@ -26,6 +26,7 @@ python manage.py createsuperuser --username admin@mail.ru --email admin@mail.ru
 ```
 
 ### Django available:
-http://localhost:8000/Cars  
-Superuser: admin@mail.ru  
-Password: <your password>
+Url: http://localhost:8000  
+Name superuser: admin@mail.ru  
+Password: "your password in this step 'Create superuser' "
+ 
