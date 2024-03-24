@@ -2,8 +2,12 @@ from django.db import models
 from django.db.models import Q, UniqueConstraint
 
 
+def validate_no_slash(value):
+    if '/' in value:
+        raise ValidationError('Символ "/" запрещен.')
+
 class TreeMenu(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, validators=[validate_no_slash])
     parent = models.ForeignKey(
         'self', 
         on_delete=models.CASCADE, 
