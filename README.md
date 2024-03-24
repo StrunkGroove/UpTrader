@@ -24,5 +24,3 @@ python data_for_fill_db.py
 ```
 python manage.py createsuperuser --username admin@mail.ru --email admin@mail.ru
 ```
-### For applying migrations and fill db and create user:
-```
