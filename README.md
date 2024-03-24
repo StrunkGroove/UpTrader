@@ -16,6 +16,7 @@
  При выполнении задания из библиотек следует использовать только Django и стандартную библиотеку Python.
 
 ### For download and start docker-compose:
+***
 ```
 git clone https://github.com/StrunkGroove/UpTrader.git && \
 cd ./UpTrader && \
@@ -23,6 +24,7 @@ docker-compose --env-file .env.dev up -d
 ```
 
 ### For setup app
+***
 #### Enter Docker container:
 ```
 docker-compose --env-file .env.dev exec -it web bash
