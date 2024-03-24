@@ -10,7 +10,7 @@ docker-compose --env-file .env.dev up -d
 ### For setup app
 #### Enter Docker container:
 ```
-docker-compose exec -it web bash
+docker-compose --env-file .env.dev exec -it web bash
 ```
 #### Applying migrations
 ```
