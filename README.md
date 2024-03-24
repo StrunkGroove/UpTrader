@@ -24,3 +24,9 @@ python data_for_fill_db.py
 ```
 python manage.py createsuperuser --username admin@mail.ru --email admin@mail.ru
 ```
+
+### Django available:
+Url: http://localhost:8000  
+Name superuser: admin@mail.ru  
+Password: "your password in this step 'Create superuser' "
+ 
