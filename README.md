@@ -4,7 +4,7 @@
 ```
 git clone https://github.com/StrunkGroove/UpTrader.git && \
 cd ./UpTrader && \
-docker-compose --env-file .env.dev up
+docker-compose --env-file .env.dev up-d 
 ```
 
 ### For setup app
