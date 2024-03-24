@@ -6,4 +6,5 @@ from .models import TreeMenu
 @admin.register(TreeMenu)
 class TreeMenuAdmin(admin.ModelAdmin):
     list_display = ('name', 'parent', 'depth')
-    search_fields = ['name']
+    search_fields = ['name', 'depth']
+    list_filter = ['depth']

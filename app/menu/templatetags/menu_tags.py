@@ -61,7 +61,8 @@ class MenuBuilder:
                                             ) -> list[TreeMenu]:
         """
         Gets menu record for building a menu and checks if the first 
-        path exists in the database.
+        path exists in the database. If first path not in db it means 
+        that the user is asking to draw a menu that is not in the db.
 
         Args:
             menu_name (str): The name of the menu to draw.

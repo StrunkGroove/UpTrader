@@ -1,3 +1,5 @@
+import os
+
 from os import getenv
 from pathlib import Path
 
@@ -12,15 +14,7 @@ ALLOWED_HOSTS = getenv('ALLOWED_HOSTS').split(',')
 
 INTERNAL_IPS = [
     '127.0.0.1',
-    '0.0.0.0',
 ]
-
-def show_toolbar(request):
-        return True
-
-DEBUG_TOOLBAR_CONFIG = {
-    'SHOW_TOOLBAR_CALLBACK': show_toolbar,
-}
 
 EXTANSION_APPS = [
     'menu',
@@ -65,6 +59,24 @@ TEMPLATES = [
     },
 ]
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
 WSGI_APPLICATION = 'UpTrader.wsgi.application'
 
 DATABASES = {
@@ -102,5 +114,15 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# For django-debug-toolbar
+if DEBUG:
+    def show_toolbar(request):
+            return True
+
+    DEBUG_TOOLBAR_CONFIG = {
+        'SHOW_TOOLBAR_CALLBACK': show_toolbar,
+    }
