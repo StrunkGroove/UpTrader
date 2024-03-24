@@ -1,7 +1,6 @@
 # UpTrader
 
 ## Task
-___
 Нужно сделать django app, который будет реализовывать древовидное меню, соблюдая следующие условия:
 1) Меню реализовано через template tag
 2) Все, что над выделенным пунктом - развернуто. Первый уровень вложенности под выделенным пунктом тоже развернут.
@@ -15,16 +14,14 @@ ___
  {% draw_menu 'main_menu' %}
  При выполнении задания из библиотек следует использовать только Django и стандартную библиотеку Python.
 
-### For download and start docker-compose:
-***
+## For download and start docker-compose:
 ```
 git clone https://github.com/StrunkGroove/UpTrader.git && \
 cd ./UpTrader && \
 docker-compose --env-file .env.dev up -d 
 ```
 
-### For setup app
-***
+## For setup app
 #### Enter Docker container:
 ```
 docker-compose --env-file .env.dev exec -it web bash
