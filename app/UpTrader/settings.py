@@ -1,6 +1,7 @@
 from os import getenv
 from pathlib import Path
 
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = getenv('SECRET_KEY')
@@ -9,8 +10,21 @@ DEBUG = getenv('DEBUG').upper() == 'TRUE'
 
 ALLOWED_HOSTS = getenv('ALLOWED_HOSTS').split(',')
 
-EXTANSION_APPS = [
+INTERNAL_IPS = [
+    '127.0.0.1',
+    '0.0.0.0',
+]
 
+def show_toolbar(request):
+        return True
+
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': show_toolbar,
+}
+
+EXTANSION_APPS = [
+    'menu',
+    'debug_toolbar',
 ]
 
 INSTALLED_APPS = [
@@ -23,6 +37,7 @@ INSTALLED_APPS = [
 ] + EXTANSION_APPS
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -32,7 +47,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'tree_menu.urls'
+ROOT_URLCONF = 'UpTrader.urls'
 
 TEMPLATES = [
     {
@@ -50,7 +65,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'tree_menu.wsgi.application'
+WSGI_APPLICATION = 'UpTrader.wsgi.application'
 
 DATABASES = {
     'default': {

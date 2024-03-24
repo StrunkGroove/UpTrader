@@ -1,0 +1,9 @@
+{% extends 'menu/base.html' %}
+{% load menu_tags %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+    {% draw_menu 'Cars' %}
+    {% draw_menu 'Electronics' %}
+{% endblock %}

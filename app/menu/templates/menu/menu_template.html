@@ -1,0 +1,18 @@
+<ul>
+  {% for item, children in tree.items %}
+  <li>
+      <a href="/{% if parent_path %}{{ parent_path }}/{% endif %}{{ item.name }}">{{ item.name }}</a>
+      {% if children %}
+        <ul>
+            {% if parent_path %}
+              {% with new_parent_path=parent_path|add:"/"|add:item.name %}
+                {% include 'menu/menu_template.html' with tree=children parent_path=new_parent_path %}
+              {% endwith %}
+            {% else %}
+              {% include 'menu/menu_template.html' with tree=children parent_path=item.name %}
+            {% endif %}
+        </ul>
+      {% endif %}
+  </li>
+  {% endfor %}
+</ul>
