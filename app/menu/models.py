@@ -4,7 +4,7 @@ from django.db.models import Q, UniqueConstraint
 
 def validate_no_slash(value):
     if '/' in value:
-        raise ValidationError('Символ "/" запрещен.')
+        raise ValidationError('Symbol "/" prohibited.')
 
 class TreeMenu(models.Model):
     name = models.CharField(max_length=100, validators=[validate_no_slash])
