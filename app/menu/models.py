@@ -15,7 +15,7 @@ class TreeMenu(models.Model):
         blank=True, 
         related_name='children'
     )
-    depth = models.IntegerField(default=0, editable=False)
+    depth = models.IntegerField(editable=False)
 
     def clean(self):
         siblings_with_same_name = TreeMenu.objects \
@@ -34,12 +34,7 @@ class TreeMenu(models.Model):
         super(TreeMenu, self).save(*args, **kwargs)
 
     def calculate_depth(self):
-        depth = 0
-        current_node = self
-        while current_node.parent_id is not None:
-            depth += 1
-            current_node = current_node.parent
-        return depth
+        return self.parent.depth + 1 if self.parent else 0
 
     def __str__(self):
         return self.name
